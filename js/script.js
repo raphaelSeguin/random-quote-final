@@ -1,25 +1,22 @@
 // store the quote-box div in a variable
 const quoteBox = document.getElementById('quote-box');
-const loadQuote = document.getElementById('loadQuote');
+const loadQuoteButton = document.getElementById('loadQuote');
 const body = document.querySelector('body');
 
 // timeoutID is useful to reset the timer every time the user manually changes the random quote
 let timeoutID = null;
 
 // quotes will contain all my quoteObjects
-let quotes = [];
-
-// add quote objects to the quotes array
-const initQuotes = function() {
-  quotes.push({
+const quotes = [
+  {
     quote: "I don't know",
     source: "Anonymous",
     tags: [
       "uninteresting"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "I'm really not sure",
     source: "Someone",
     citation: "Somewhere",
@@ -29,8 +26,8 @@ const initQuotes = function() {
       "uncertainty"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "You can do anything but not everything",
     source: "David Allen",
     citation: "Making It All Work",
@@ -40,8 +37,8 @@ const initQuotes = function() {
       "good advice"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "Be yourself, everyone else is already taken.",
     source: "Oscar Wilde",
     year: 2009,
@@ -49,8 +46,8 @@ const initQuotes = function() {
       "humour"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "S'il n'y a pas de solution, c'est qu'il n'y a pas de problème.",
     source: "Les Shadoks",
     year: 1968,
@@ -60,8 +57,8 @@ const initQuotes = function() {
       "paradox"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "Trying to explain music is like trying to dance architecture.",
     source: "Thelonius Monk",
     tags: [
@@ -69,8 +66,8 @@ const initQuotes = function() {
       "music"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "Science is what we understand well enough to explain to a computer. Art is everything else we do.",
     source: "Donald Knuth",
     tags: [
@@ -78,8 +75,8 @@ const initQuotes = function() {
       "art"
     ],
     dateAdded: "01-15-2018"
-  });
-  quotes.push({
+  },
+  {
     quote: "The computer can't tell you the emotional story. It can give you the exact mathematical design, but what's missing is the eyebrows.",
     source: "Frank Zappa",
     tags: [
@@ -89,8 +86,8 @@ const initQuotes = function() {
       "emotions"
     ],
     dateAdded: "01-15-2018"
-  });
-};
+  }
+];
 
 // puts a random quote in the quote-box div
 const printQuote = function() {
@@ -129,8 +126,7 @@ const randomInt = function(max) {
   return Math.floor(Math.random() * max);
 }
 
-// a function that get a DIFFERENT random number every time
-// so you don't get the feeling that the app didn't react to the click
+// a function that get a DIFFERENT random number every time so you don't get the feeling that the app didn't react to the click
 const differentRandomInt = (function() {
   let previousOutput = null;
   let differentRandomInt = function(max) {
@@ -164,13 +160,11 @@ const changeBackgroundColor = function() {
   let nextColor = getRandomColorHexa();
   body.style.backgroundColor = nextColor;
   // also change the button's color
-  loadQuote.style.backgroundColor = nextColor;
+  loadQuoteButton.style.backgroundColor = nextColor;
 }
 
 // event listener to respond to "Show another quote" button clickswhen user clicks anywhere on the button, the "printQuote" function is called
-loadQuote.addEventListener("click", printQuote, false);
+loadQuoteButton.addEventListener("click", printQuote, false);
 
-// initialize the quotes array
-initQuotes();
 // invoke the function once so the page loads with a random quote
 printQuote();
